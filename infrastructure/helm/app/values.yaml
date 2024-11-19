@@ -5,27 +5,8 @@ image:
   tag: "blue"
   pullPolicy: IfNotPresent
 
-service:
-  type: ClusterIP
-  port: 3000
+Service:
+  Type: ClusterIP
+  Port: 3000
 
-environment: blue
-
-ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: "alb"
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/backend-protocol: HTTP
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: app
-            port:
-              number: 3000
+Environment: blue
