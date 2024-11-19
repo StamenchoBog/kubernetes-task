@@ -1,9 +1,9 @@
 replicaCount: 1
 
-image:
-  repository: 402022866377.dkr.ecr.eu-central-1.amazonaws.com/node-demo-app
-  tag: "blue"
-  pullPolicy: IfNotPresent
+Image:
+  Repository: 402022866377.dkr.ecr.eu-central-1.amazonaws.com/node-demo-app
+  Tag: "blue"
+  PullPolicy: IfNotPresent
 
 Service:
   Type: ClusterIP
