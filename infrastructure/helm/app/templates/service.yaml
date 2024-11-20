@@ -9,4 +9,4 @@ spec:
       targetPort: {{ .Values.Service.Port }}
       protocol: TCP
   selector:
-    app: "app-{{ .Values.Environment }}"
+    app: "{{ .Values.Environment }}"
