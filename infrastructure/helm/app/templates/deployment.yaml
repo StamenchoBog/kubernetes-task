@@ -6,7 +6,7 @@ metadata:
   labels:
     app: "{{ .Values.Environment }}"
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.ReplicaCount }}
   selector:
     matchLabels:
       app: "{{ .Values.Environment }}"
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.Image.Repository }}:{{ .Values.Image.Tag }}"
+          imagePullPolicy: {{ .Values.Image.PullPolicy }}
           ports:
-            - containerPort: {{ .Values.service.port }}
+            - containerPort: {{ .Values.Service.Port }}
