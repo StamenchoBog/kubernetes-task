@@ -10,16 +10,14 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: app
-      environment: {{ .Values.Environment }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: app
-        environment: {{ .Values.Environment }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.Image.Repository }}:{{ .Values.Image.Tag }}"
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 3000
