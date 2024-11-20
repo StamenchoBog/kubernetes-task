@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-{{ .Values.Environment }}
-  namespace: app
+  name: "app-{{ .Values.Environment }}"
+  namespace: "app-{{ .Values.Environment }}"
   labels:
-    app: app
-    environment: {{ .Values.Environment }}
+    app: "{{ .Values.Environment }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: "{{ .Values.Environment }}"
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}
+        app: "{{ .Values.Environment }}"
     spec:
       containers:
-        - name: {{ .Release.Name }}
-          image: "{{ .Values.Image.Repository }}:{{ .Values.Image.Tag }}"
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.service.port }}
